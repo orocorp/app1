@@ -22,4 +22,4 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag iapp1:latest
       - name: Run Docker Instance
-        run: docker run -d -p 3000:2010 -v /home/ubuntu/.env:/home/node/app1 iapp1:latest
+        run: docker run -d -p 3000:2010 -v ~/.env:/home/node/app1 iapp1:latest
