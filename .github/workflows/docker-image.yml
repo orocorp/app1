@@ -17,7 +17,8 @@ jobs:
         run: |
           echo $ENV_FILE
           echo "${ENV_FILE}" > ~/.env
-
+      - name: Print Working Dir
+        run:  pwd
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag iapp1:latest
