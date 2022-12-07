@@ -34,7 +34,12 @@ jobs:
           ENV_FILE: ${{ secrets.DEV_ENV }}
         run: |
           echo "*********"
-          cd /home/ubuntu
+          cd ..
+          echo "1....."
+          pwd
+          cd ..
+          echo "2..."
+          pwd
           echo "************ pwd"
           pwd
           echo "******* ^^^ "
