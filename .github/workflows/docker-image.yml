@@ -6,24 +6,6 @@ on:
       - "main"
 
 jobs:
-  docker-build-tag-push:
-    runs-on: ubuntu-latest
-    name: Docker Build, Tag & Publish
-    steps:
-      - name: Print Working Dir
-        run: pwd
-      - name: Build, Tag & Publish Image to DockerHub
-        uses: dinushchathurya/build-tag-push-action@v1.2.1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          context: .
-          file: /home/runner/work/app1/app1/Dockerfile
-          repoOwner: ${{ secrets.DOCKER_HUB_USERNAME }}
-          repository:  myapp1
-          tag: latest
-
-jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
