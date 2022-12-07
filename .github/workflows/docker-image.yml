@@ -1,3 +1,5 @@
+
+
 name: ci
 
 on:
@@ -27,3 +29,10 @@ jobs:
         with:
           push: true
           tags: hitesh87/myapp1:latest
+      - 
+        name: Setup env files
+        env:
+          ENV_FILE: ${{ secrets.DEV_ENV }}
+        run: |
+          echo "${ENV_FILE}" > /home/ubuntu/.env
+          
