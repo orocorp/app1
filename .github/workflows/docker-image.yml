@@ -13,8 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    - name: Setup env files
+      env:
+        ENV_FILE: ${{ secrets.DEV_ENV }}
+      run: |
+        echo "${ENV_FILE}" > /home/ubuntu/.env
+
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag iapp1:latest
     - name: Run Docker Instance
-      run: docker run -d -p 3000:2010 iapp1:latest
+      run: docker run -d -p 3000:2010 -v /home/ubuntu/.env:/home/node/app1 iapp1:latest
