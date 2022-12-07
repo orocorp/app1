@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           context: .
-          file: ./app1/Dockerfile
+          file: /home/runner/work/app1/app1/Dockerfile
           repoOwner: ${{ secrets.DOCKER_HUB_USERNAME }}
           repository:  myapp1
           tag: latest
