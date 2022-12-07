@@ -16,7 +16,7 @@ jobs:
           ENV_FILE: ${{ secrets.DEV_ENV }}
         run: |
           echo $ENV_FILE
-          echo "${ENV_FILE}" > /home/ubuntu/.env
+          echo "${ENV_FILE}" > ~/.env
 
       - uses: actions/checkout@v3
       - name: Build the Docker image
