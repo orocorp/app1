@@ -22,8 +22,7 @@ jobs:
       - 
         name: Spin up docker Container
         run: |
-          docker stop container-app1
-          docker rm container-app1
+          docker rm -f container-app1 || true
           cd /home/ubuntu
           pwd
           ls
