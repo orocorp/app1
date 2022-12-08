@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: hitesh87/myapp1:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_REPO_NAME }}:latest
 
       - 
         name: Setup env files
