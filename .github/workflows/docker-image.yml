@@ -23,7 +23,4 @@ jobs:
         name: Spin up docker Container
         run: |
           docker rm -f container-app1 || true
-          cd /home/ubuntu
-          pwd
-          ls
           docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.DOCKER_HUB_USERNAME }}/myapp1
