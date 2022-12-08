@@ -34,7 +34,8 @@ jobs:
           ENV_FILE: ${{ secrets.DEV_ENV }}
         run: |
           mkdir envs
-          echo "Hello" > /home/ubuntu/envs/.env
+          ls
+          pwd
           echo "${ENV_FILE}" > /home/ubuntu/.env
       - 
         name: Spin up docker Container
