@@ -24,4 +24,7 @@ jobs:
         run: |
           docker stop container-app1
           docker rm container-app1
-          docker run -v /home/ubuntu/.env:/home/node/app1/.env -p 5055:2010 --name container-app1 hitesh87/myapp1
+          cd /home/ubuntu
+          pwd
+          ls
+          docker run -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name container-app1 hitesh87/myapp1
