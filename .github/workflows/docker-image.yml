@@ -33,9 +33,8 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.DEV_ENV }}
         run: |
-          ls
-          whoami
-          pwd
-          echo "******* ^^^ "
           echo "${ENV_FILE}" > /home/ubuntu/.env
-          
+      - 
+        name: Spin up docker Container
+        run: |
+          docker run -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name container-app1 hitesh87/myapp1
