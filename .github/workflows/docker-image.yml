@@ -10,18 +10,33 @@ jobs:
   docker:
     runs-on: [ self-hosted ]
     steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_REPO_NAME }}:latest
 
       - 
         name: Setup env files
         env:
           ENV_FILE: ${{ secrets.DEV_ENV }}
         run: |
-          ls
-          pwd
           echo "${ENV_FILE}" > /home/ubuntu/.env
       - 
         name: Spin up docker Container
         run: |
           docker rm -f ${{ secrets.CONTAINER_NAME }} || true
-          docker login docker.io -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_ACCESS_TOKEN}
-          docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010  --name container-app1 hitesh87/private-app1
+          docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_REPO_NAME }}
