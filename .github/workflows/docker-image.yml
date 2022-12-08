@@ -26,4 +26,4 @@ jobs:
           cd /home/ubuntu
           pwd
           ls
-          docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name container-app1 hitesh87/myapp1
+          docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name ${{ secrets.CONTAINER_NAME }} hitesh87/myapp1
