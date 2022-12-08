@@ -40,6 +40,6 @@ jobs:
       - 
         name: Spin up docker Container
         run: |
-          docker rm -f container-app1 || true
+          docker rm -f ${{ secrets.CONTAINER_NAME }} || true
           docker login -u="${DOCKER_HUB_USERNAME}" -p="${DOCKER_HUB_ACCESS_TOKEN}"
           docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010 --name ${{ secrets.CONTAINER_NAME }} ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_REPO_NAME }}
