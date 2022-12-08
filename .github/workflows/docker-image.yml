@@ -23,4 +23,5 @@ jobs:
         name: Spin up docker Container
         run: |
           docker rm -f ${{ secrets.CONTAINER_NAME }} || true
+          run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login docker.io -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
           docker run -d -v $(pwd)/.env:/home/node/app1/.env -p 5055:2010  --name container-app1 hitesh87/private-app1
